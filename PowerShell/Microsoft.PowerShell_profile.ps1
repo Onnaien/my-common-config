@@ -9,6 +9,9 @@
 #oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\paradox.omp.json" | Invoke-Expression
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\multiverse-neon.omp.json" | Invoke-Expression
 
+## Set default start folder
+Set-Location c:\git
+
 #-----------------------------------------------------------
 # Scrolling/searching through history
 #-----------------------------------------------------------
@@ -39,7 +42,7 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
 #-----------------------------------------------------------
 # Set default location
 #-----------------------------------------------------------
-Set-Location d:/git
+Set-Location /git
 
 #-----------------------------------------------------------
 # General aliases/overview
@@ -71,12 +74,51 @@ function Get-MyPathListedOnePerLine {
     $Env:Path.split(";")
 }
 New-Alias path Get-MyPathListedOnePerLine
+#-----------------------------------------------------------
+function Update-Applications {
+    write-output GitHub.cli Microsoft.PowerToys JanDeDobbeleer.OhMyPosh Git.Git | 
+    ForEach-Object { 
+        & Write-output "Upgrading $_ ..." && 
+        winget upgrade --id $_ --source winget }
+}
+New-Alias u Update-Applications
+
+#-----------------------------------------------------------
+# One letter aliases
+#-----------------------------------------------------------
+#-----------------------------------------------------------
+function Get-GitBranch {
+    git branch
+}
+New-Alias b Get-GitBranch
+#-----------------------------------------------------------
+function Set-LocationGit {
+    Set-Location c:\git\
+}
+New-Alias g Set-LocationGit
+#-----------------------------------------------------------
+function Get-GitLogTree {
+    git fetch
+    git log --all --graph --decorate --oneline
+}
+New-Alias logtree Get-GitLogTree
+New-Alias l Get-GitLogTree
+#-----------------------------------------------------------
+function Get-GitStatus {
+    git status
+}
+New-Alias s Get-GitStatus
+#-----------------------------------------------------------
+function Set-TitleBranch {
+    $Host.UI.RawUI.WindowTitle = git branch --show-current
+}
+New-Alias t Set-TitleBranch
 
 #-----------------------------------------------------------
 # Location aliases
 #-----------------------------------------------------------
 function Get-MyLocationAliases {
-    Get-Alias slprix, slgit, slprixtest
+    Get-Alias slgit
 }
 New-Alias gloc Get-MyLocationAliases
 #-----------------------------------------------------------
@@ -112,13 +154,6 @@ function Get-MyGitAliases {
 New-Alias ggit Get-MyGitAliases
 #-----------------------------------------------------------
 #-----------------------------------------------------------
-function Get-GitLogTree {
-    git pull
-    git log --all --graph --decorate --oneline
-}
-New-Alias logtree Get-GitLogTree
-New-Alias l Get-GitLogTree
-#-----------------------------------------------------------
 #-----------------------------------------------------------
 function Get-GitVersion {
     git --version
@@ -134,21 +169,28 @@ function Invoke-MyGitPop {
     git stash pop
 }
 New-Alias ipop Invoke-MyGitPop
+#-----------------------------------------------------------
 function Push-Branch {
     git branch --show-current| ForEach-Object { & git push --set-upstream origin $_ }
 }
 New-Alias pushBranch Push-Branch
 
 #-----------------------------------------------------------
-function Get-GitStatus {
-    git status
+function Get-GitBranches {
+    Write-Output "dev1:"
+    cd dev1/ignos-client && git branch && cd -
+    Write-Output "dev2:"
+    cd dev2/ignos-client && git branch && cd -
+    Write-Output "dev3:"
+    cd dev3/ignos-client && git branch && cd -
+    Write-Output "imola1:"
+    cd imola1/imola-client && git branch && cd -
+    Write-Output "imola2:"
+    cd imola2/imola-client && git branch && cd -
+    Write-Output "imola3:"
+    cd imola3/imola-client && git branch && cd -
 }
-New-Alias s Get-GitStatus
-#-----------------------------------------------------------
-function Set-TitleBranch {
-    $Host.UI.RawUI.WindowTitle = git branch --show-current
-}
-New-Alias t Set-TitleBranch
+New-Alias showBranches Get-GitBranches
 #-----------------------------------------------------------
 function Update-MyGitBranchPullAndRebaseMaster {
     git pull --rebase origin master
@@ -173,4 +215,8 @@ function Open-CypressGui-Dev {
     npx cypress open
 }
 New-Alias cypopendev Open-CypressGui-Dev
+
 #-----------------------------------------------------------
+# Notes
+#-----------------------------------------------------------
+# git branch --show-current | ForEach-Object { & git switch master && git pull }
