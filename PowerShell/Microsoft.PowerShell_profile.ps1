@@ -121,21 +121,10 @@ function Get-MyLocationAliases {
     Get-Alias slgit
 }
 New-Alias gloc Get-MyLocationAliases
-#-----------------------------------------------------------
-#-----------------------------------------------------------
-function Set-LocationGit {
-    Set-Location \git\
-}
-New-Alias g Set-LocationGit
 
 #-----------------------------------------------------------
 # Git aliases
 #-----------------------------------------------------------
-#-----------------------------------------------------------
-function Get-GitBranch {
-    git branch
-}
-New-Alias b Get-GitBranch
 #-----------------------------------------------------------
 function Remove-Branch {
     git branch --show-current| ForEach-Object { & git checkout master && git branch -d $_ && git pull }
