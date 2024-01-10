@@ -166,18 +166,9 @@ New-Alias pushBranch Push-Branch
 
 #-----------------------------------------------------------
 function Get-GitBranches {
-    Write-Output "dev1:"
-    cd dev1/ignos-client && git branch && cd -
-    Write-Output "dev2:"
-    cd dev2/ignos-client && git branch && cd -
-    Write-Output "dev3:"
-    cd dev3/ignos-client && git branch && cd -
-    Write-Output "imola1:"
-    cd imola1/imola-client && git branch && cd -
-    Write-Output "imola2:"
-    cd imola2/imola-client && git branch && cd -
-    Write-Output "imola3:"
-    cd imola3/imola-client && git branch && cd -
+    g && Get-ChildItem dev1| ForEach-Object {& Write-Output $_ && Set-Location $_ && git branch}
+    g && Get-ChildItem dev2| ForEach-Object {& Write-Output $_ && Set-Location $_ && git branch}
+    g && Get-ChildItem dev3| ForEach-Object {& Write-Output $_ && Set-Location $_ && git branch}
 }
 New-Alias showBranches Get-GitBranches
 #-----------------------------------------------------------
