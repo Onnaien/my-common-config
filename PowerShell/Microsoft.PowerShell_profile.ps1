@@ -10,7 +10,11 @@
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\multiverse-neon.omp.json" | Invoke-Expression
 
 ## Set default start folder
-Set-Location c:\git
+if (Test-Path -Path c:\git){
+    Set-Location c:\git
+} else {
+    Set-Location d:\git
+}
 
 #-----------------------------------------------------------
 # Scrolling/searching through history
@@ -93,7 +97,7 @@ function Get-GitBranch {
 New-Alias b Get-GitBranch
 #-----------------------------------------------------------
 function Set-LocationGit {
-    Set-Location c:\git\
+    Set-Location \git\
 }
 New-Alias g Set-LocationGit
 #-----------------------------------------------------------
