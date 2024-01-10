@@ -51,10 +51,11 @@ Set-Location /git
 #-----------------------------------------------------------
 # General aliases/overview
 #-----------------------------------------------------------
-function Get-MyAliases {
-    Get-Alias gloc, cypa, ggit, opprof, opnpp, path
+function Get-Aliases {
+    Get-Alias ?
+    Get-Alias ??
 }
-New-Alias a Get-MyAliases
+New-Alias a Get-Aliases
 #-----------------------------------------------------------
 function Set-Title {
     param(
@@ -173,8 +174,10 @@ function Get-GitBranches {
     g && Get-ChildItem dev1| ForEach-Object {& Write-Output $_ && Set-Location $_ && git branch}
     g && Get-ChildItem dev2| ForEach-Object {& Write-Output $_ && Set-Location $_ && git branch}
     g && Get-ChildItem dev3| ForEach-Object {& Write-Output $_ && Set-Location $_ && git branch}
+    g
 }
 New-Alias showBranches Get-GitBranches
+New-Alias sb Get-GitBranches
 #-----------------------------------------------------------
 function Update-MyGitBranchPullAndRebaseMaster {
     git pull --rebase origin master
