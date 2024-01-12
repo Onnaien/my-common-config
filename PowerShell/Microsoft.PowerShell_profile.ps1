@@ -104,6 +104,7 @@ New-Alias g Set-LocationGit
 #-----------------------------------------------------------
 function Get-GitLogTree {
     git fetch
+    git remote prune origin
     git log --all --graph --decorate --oneline
 }
 New-Alias logtree Get-GitLogTree
