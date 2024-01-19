@@ -116,7 +116,10 @@ function Get-GitStatus {
 New-Alias s Get-GitStatus
 #-----------------------------------------------------------
 function Set-TitleBranch {
-    $Host.UI.RawUI.WindowTitle = git branch --show-current
+    $dev = (get-item .).Parent.name[-1]
+    $branch = git branch --show-current
+    $client = (get-item .).name.Substring(0,2)
+    $Host.UI.RawUI.WindowTitle = "$($dev)-$($client)-$($branch)"
 }
 New-Alias t Set-TitleBranch
 
