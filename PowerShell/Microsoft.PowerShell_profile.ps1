@@ -51,12 +51,6 @@ Set-Location /git
 #-----------------------------------------------------------
 # General aliases/overview
 #-----------------------------------------------------------
-function Get-Aliases {
-    Get-Alias ?
-    Get-Alias ??
-}
-New-Alias a Get-Aliases
-#-----------------------------------------------------------
 function Set-Title {
     param(
         [string]
@@ -80,17 +74,23 @@ function Get-MyPathListedOnePerLine {
 }
 New-Alias path Get-MyPathListedOnePerLine
 #-----------------------------------------------------------
-function Update-Applications {
-    write-output GitHub.cli Microsoft.PowerToys JanDeDobbeleer.OhMyPosh Git.Git | 
-    ForEach-Object { 
-        & Write-output "Upgrading $_ ..." && 
-        winget upgrade --id $_ --source winget }
-}
-New-Alias u Update-Applications
+# function Update-Applications {
+#     write-output GitHub.cli Microsoft.PowerToys JanDeDobbeleer.OhMyPosh Git.Git | 
+#     ForEach-Object { 
+#         & Write-output "Upgrading $_ ..." && 
+#         winget upgrade --id $_ --source winget }
+# }
+# New-Alias u Update-Applications
 
 #-----------------------------------------------------------
 # One letter aliases
 #-----------------------------------------------------------
+#-----------------------------------------------------------
+function Get-Aliases {
+    Get-Alias ?
+    Get-Alias ??
+}
+New-Alias a Get-Aliases
 #-----------------------------------------------------------
 function Get-GitBranch {
     git branch
@@ -122,6 +122,28 @@ function Set-TitleBranch {
     $Host.UI.RawUI.WindowTitle = "$($dev)-$($client)-$($branch)"
 }
 New-Alias t Set-TitleBranch
+#-----------------------------------------------------------
+# Two letter aliases
+#-----------------------------------------------------------
+function Get-Aliases-2 {
+    Get-Alias ?? -Scope Script
+}
+New-Alias a2 Get-Aliases-2
+#-----------------------------------------------------------
+function Get-Aliases-3 {
+    Get-Alias ???
+}
+New-Alias a3 Get-Aliases-3
+#-----------------------------------------------------------
+# Three letter aliases
+#-----------------------------------------------------------
+#-----------------------------------------------------------
+New-Alias sta Invoke-MyGitStash
+#-----------------------------------------------------------
+New-Alias pop Invoke-MyGitPop
+#-----------------------------------------------------------
+New-Alias pus Push-Branch
+#-----------------------------------------------------------
 
 #-----------------------------------------------------------
 # Location aliases
@@ -150,6 +172,7 @@ function Get-MyGitAliases {
     Get-Alias ggitv, istash, ipop, uPullMaster, uPullMain | Format-Table -AutoSize
 }
 New-Alias ggit Get-MyGitAliases
+New-Alias agit Get-MyGitAliases
 #-----------------------------------------------------------
 #-----------------------------------------------------------
 #-----------------------------------------------------------
@@ -162,6 +185,7 @@ function Invoke-MyGitStash {
     git stash
 }
 New-Alias istash Invoke-MyGitStash
+New-Alias stash Invoke-MyGitStash
 #-----------------------------------------------------------
 function Invoke-MyGitPop {
     git stash pop
