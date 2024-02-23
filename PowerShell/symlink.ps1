@@ -1,5 +1,5 @@
 # Avoiding drive letter to cope with using c on one computer and d on another:
-$gitRepoPath = "/git/my-powershell-setup/"
+$gitRepoPath = "/git/my-common-config/"
 $symlinkParams = @{
   Path = $PROFILE
   Value = "$gitRepoPath/PowerShell/Microsoft.PowerShell_profile.ps1"
