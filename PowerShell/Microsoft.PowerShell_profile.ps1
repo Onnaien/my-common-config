@@ -65,7 +65,7 @@ function Open-MyPowershellProfile {
 New-Alias opprof Open-MyPowershellProfile
 #-----------------------------------------------------------
 function Open-NotepadPlusPlus {
-    start notepad++.exe
+    Start-Process notepad++.exe
 }
 New-Alias opnpp Open-NotepadPlusPlus
 #-----------------------------------------------------------
@@ -109,6 +109,16 @@ function Get-GitLogTree {
 }
 New-Alias logtree Get-GitLogTree
 New-Alias l Get-GitLogTree
+#-----------------------------------------------------------
+function Set-Branch-Master {
+    git switch master
+}
+New-Alias m Set-Branch-Master
+#-----------------------------------------------------------
+function Get-Parent-Branch {
+    git parent
+}
+New-Alias p Get-Parent-Branch
 #-----------------------------------------------------------
 function Get-GitStatus {
     git status
@@ -161,6 +171,11 @@ function Remove-Branch {
     git branch --show-current| ForEach-Object { & git checkout master && git branch -d $_ && git pull }
 }
 New-Alias deleteBranch Remove-Branch
+#-----------------------------------------------------------
+function Remove-Branch-Force {
+    git branch --show-current| ForEach-Object { & git checkout master && git branch -D $_ && git pull }
+}
+New-Alias deleteBranchForce Remove-Branch-Force
 #-----------------------------------------------------------
 function Remove-Branch-Main {
     git branch --show-current| ForEach-Object { & git checkout main && git branch -d $_ && git pull }
