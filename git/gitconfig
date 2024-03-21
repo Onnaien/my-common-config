@@ -1,8 +1,24 @@
 [alias]
-    parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
+	amend = commit -a --amend
+	bclean = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch -d; }; f"
+	bdone = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT} && git up && git bclean ${1-$DEFAULT}; }; f"
+	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+    ec = config --global -e
+	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
+	save = !git add -A && git commit -m 'savepoint'
+	sw = switch
+	swc = switch -c
+	wip = commit -am "wip"
+	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 	undo = reset HEAD~1 --mixed
+	up = !git pull --rebase --prune $@ && npm i
+
+
     
 [core]
 	editor = code
+
+
+# https://haacked.com/archive/2014/07/28/github-flow-aliases/
 
 
