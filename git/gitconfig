@@ -1,9 +1,13 @@
 [alias]
+	a = config --get-regexp ^alias
 	amend = commit -a --amend
 	bclean = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch -d; }; f"
 	bdone = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT} && git up && git bclean ${1-$DEFAULT}; }; f"
+	cm = !git add -A && git commit -m
+	d = diff
 	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
     ec = config --global -e
+	lbclean = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
 	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 	save = !git add -A && git commit -m 'savepoint'
 	sw = switch
