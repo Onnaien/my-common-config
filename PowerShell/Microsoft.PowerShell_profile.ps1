@@ -105,10 +105,23 @@ New-Alias g Set-LocationGit
 function Get-GitLogTree {
     git fetch
     git remote prune origin
-    git log --all --graph --decorate --oneline
+    git log -n 20 --all --graph --decorate --oneline
 }
 New-Alias logtree Get-GitLogTree
 New-Alias l Get-GitLogTree
+#-----------------------------------------------------------
+function Get-GitLogTreeNpm {
+    git fetch
+    git remote prune origin
+    npm i
+    git log -n 20 --all --graph --decorate --oneline
+}
+New-Alias li Get-GitLogTreeNpm
+#-----------------------------------------------------------
+function Get-GitLogTreeAll {
+    git log --all --graph --decorate --oneline
+}
+New-Alias la Get-GitLogTree
 #-----------------------------------------------------------
 function Set-Branch-Master {
     git switch master
