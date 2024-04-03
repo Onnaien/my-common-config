@@ -1,5 +1,5 @@
 [alias]
-	a = config --get-regexp ^alias
+	a = config --get-regexp ^alias # list git aliases
 	amend = commit -a --amend
 	bclean = "!f() { DEFAULT=$(git default); git branch --merged ${1-$DEFAULT} | grep -v " ${1-$DEFAULT}$" | xargs git branch -d; }; f"
 	bdone = "!f() { DEFAULT=$(git default); git checkout ${1-$DEFAULT} && git up && git bclean ${1-$DEFAULT}; }; f"
@@ -16,7 +16,7 @@
 	wip = commit -am "wip"
 	wipe = !git add -A && git commit -qm 'wipe savepoint' && git reset HEAD~1 --hard
 	undo = reset HEAD~1 --mixed
-	up = !git pull --rebase --prune $@ && npm i
+	up = !git pull --rebase --prune $@
 
 
     
