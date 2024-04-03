@@ -121,7 +121,7 @@ New-Alias li Get-GitLogTreeNpm
 function Get-GitLogTreeAll {
     git log --all --graph --decorate --oneline
 }
-New-Alias la Get-GitLogTree
+New-Alias la Get-GitLogTreeAll
 #-----------------------------------------------------------
 function Set-Branch-Master {
     git switch master
