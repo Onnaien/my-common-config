@@ -10,14 +10,22 @@
 	lbclean = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
 	li = "!git fetch && git remote prune origin"
 	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
-	resetOrigin = reset --hard "@{u}"
+	pop-package = !git list-package-stash-number | git stash pop
+	list-package-stash-number = !git stash list --pretty='%gd %s'|grep "package-files"|head -1|gawk '{print $1}'
+	reset-origin = reset --hard "@{u}"
 	save = !git add -A && git commit -m 'savepoint'
-	sw = switch
-	swc = switch -c
-	wip = commit -am "wip"
-	wipe = !git add -A && git commit -qm 'wipe savepoint' && git reset HEAD~1 --hard
+	sd-stash-drop = stash drop
+	sl-stash-list = stash list
+	spu-stash-push = stash push
+	spo-stash-pop = stash pop
+	ss-stash-show = stash show
+	stash-packages = stash push --message "package-files" package.json package-lock.json
+	sw-switch = switch
+	swc-switch-c = switch -c
+	wip-commit-wip = commit -am "wip"
+	wipe-save-commit-and-go-back-to-last-commit = !git add -A && git commit -qm 'wipe savepoint' && git reset HEAD~1 --hard
 	undo = reset HEAD~1 --mixed
-	undoOrigin = !git resetOrigin && git undo
+	undo-origin = !git resetOrigin && git undo
 	up = !git pull --rebase --prune $@
 
 
