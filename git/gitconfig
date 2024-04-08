@@ -25,7 +25,7 @@
 	wip-commit-wip = commit -am "wip"
 	wipe-save-commit-and-go-back-to-last-commit = !git add -A && git commit -qm 'wipe savepoint' && git reset HEAD~1 --hard
 	undo = reset HEAD~1 --mixed
-	undo-origin = !git resetOrigin && git undo
+	undo-origin = !git reset-origin && git undo
 	up = !git pull --rebase --prune $@
 
 
