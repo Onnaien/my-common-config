@@ -19,7 +19,7 @@
 	sl-stash-list = stash list
 	spu-stash-push = stash push
 	spo-stash-pop = stash pop
-	ss-stash-show = stash show
+	ss-stash-show = stash show -p
 	stash-packages = stash push --message "package-files" package.json package-lock.json
 	sw-switch = switch
 	swc-switch-c = switch -c
