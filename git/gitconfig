@@ -36,6 +36,8 @@
 [core]
 	editor = code
 
+[branch "master"]
+	pushRemote = no_push # push to a dummy repo when on master to disallow push to master.
 
 # https://haacked.com/archive/2014/07/28/github-flow-aliases/
 
