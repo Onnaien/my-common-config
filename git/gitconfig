@@ -7,7 +7,7 @@
 	d = diff
 	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
     ec = config --global -e
-	lbclean = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
+	lbclean-delete-local-branches-without-remote = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
 	li = "!git fetch && git remote prune origin"
 	lmine = log --oneline --author=\"Morten Undheim\" #  --since='3 weeks ago'
 	lname = log --name-only # show filenames
