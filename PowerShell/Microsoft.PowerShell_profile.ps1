@@ -133,10 +133,10 @@ function Get-Parent-Branch {
 }
 New-Alias p Get-Parent-Branch
 #-----------------------------------------------------------
-function Get-GitStatus {
-    git status
+function Invoke-NpmStart {
+    npm start
 }
-New-Alias s Get-GitStatus
+New-Alias s Invoke-NpmStart
 #-----------------------------------------------------------
 function Set-TitleBranch {
     $dev = (get-item .).Parent.name[-1]
@@ -157,6 +157,18 @@ function Get-Aliases-3 {
     Get-Alias ???
 }
 New-Alias a3 Get-Aliases-3
+#-----------------------------------------------------------
+function Invoke-GitPushForceWithLease {
+    git push --force-with-lease
+    l
+}
+New-Alias pf Invoke-GitPushForceWithLease
+#-----------------------------------------------------------
+function Invoke-GitPush {
+    git push --force-with-lease
+    l
+}
+New-Alias pu Invoke-GitPush
 #-----------------------------------------------------------
 # Three letter aliases
 #-----------------------------------------------------------
