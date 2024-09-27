@@ -232,6 +232,12 @@ function Invoke-MyGitPop {
 }
 New-Alias ipop Invoke-MyGitPop
 #-----------------------------------------------------------
+function Invoke-PrettierOnChanged {
+    git diff --name-only| ForEach-Object {npx prettier --write $_}
+}
+New-Alias prettier-on-changed Invoke-PrettierOnChanged
+
+#-----------------------------------------------------------
 function Push-Branch {
     git branch --show-current| ForEach-Object { & git push --set-upstream origin $_ }
 }
