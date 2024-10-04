@@ -171,8 +171,33 @@ function Invoke-GitPush {
 }
 New-Alias pu Invoke-GitPush
 #-----------------------------------------------------------
+function Invoke-EsLint {
+    npx eslint ./src/
+}
+New-Alias es Invoke-EsLint
+#-----------------------------------------------------------
+function Invoke-TypeScriptCompiler {
+    npx tsc
+}
+New-Alias ts Invoke-TypeScriptCompiler
+#-----------------------------------------------------------
 # Three letter aliases
 #-----------------------------------------------------------
+#-----------------------------------------------------------
+function Set-Location1 {
+    Set-Location .\dev1\ignos-client\
+}
+New-Alias cd1 Set-Location1
+#-----------------------------------------------------------
+function Set-Location2 {
+    Set-Location ./dev2/ignos-client/
+}
+New-Alias cd2 Set-Location2
+#-----------------------------------------------------------
+function Set-Location3 {
+    Set-Location .\dev3\ignos-client\
+}
+New-Alias cd3 Set-Location3
 #-----------------------------------------------------------
 New-Alias sta Invoke-MyGitStash
 #-----------------------------------------------------------
