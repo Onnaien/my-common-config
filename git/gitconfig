@@ -41,4 +41,8 @@
 
 # https://haacked.com/archive/2014/07/28/github-flow-aliases/
 
+[push]
+	autoSetupRemote = true
+
+
 
