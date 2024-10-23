@@ -98,6 +98,11 @@ function Get-GitBranch {
 }
 New-Alias b Get-GitBranch
 #-----------------------------------------------------------
+function Open-Vscode {
+    code .
+}
+New-Alias c Open-Vscode
+#-----------------------------------------------------------
 function Set-LocationGit {
     Set-Location \git\
 }
