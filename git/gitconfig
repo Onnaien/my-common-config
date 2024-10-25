@@ -14,6 +14,7 @@
 	lname = log --name-only # show filenames
 	lnameonly = log --oneline --name-only # show only filenames
 	mb = !git merge-base HEAD `git parent` # common ancestor of HEAD and parent
+	rebase-onto-master = "!git switch master && git pull && git switch - && git rebase --onto master $(git mb)" # rebase current branch onto master. That is, branch it off master instead of current parent.
 	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 	pop-package = !git list-package-stash-number | git stash pop
 	list-package-stash-number = !git stash list --pretty='%gd %s'|grep "package-files"|head -1|gawk '{print $1}'
