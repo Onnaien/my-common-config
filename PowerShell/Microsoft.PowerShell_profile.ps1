@@ -116,19 +116,6 @@ function Get-GitLogTree {
 New-Alias logtree Get-GitLogTree
 New-Alias l Get-GitLogTree
 #-----------------------------------------------------------
-function Get-GitLogTreeNpm {
-    git fetch
-    git remote prune origin
-    npm i
-    git log -n 20 --all --graph --decorate --oneline
-}
-New-Alias li Get-GitLogTreeNpm
-#-----------------------------------------------------------
-function Get-GitLogTreeAll {
-    git log --all --graph --decorate --oneline
-}
-New-Alias la Get-GitLogTreeAll
-#-----------------------------------------------------------
 function Set-Branch-Master {
     git switch master
 }
@@ -163,6 +150,26 @@ function Get-Aliases-3 {
     Get-Alias ???
 }
 New-Alias a3 Get-Aliases-3
+#-----------------------------------------------------------
+function Get-GitLogTreeNpm {
+    git fetch
+    git remote prune origin
+    npm i
+    git log -n 20 --all --graph --decorate --oneline
+}
+New-Alias li Get-GitLogTreeNpm
+#-----------------------------------------------------------
+function Get-GitLogTreeAll {
+    git log --all --graph --decorate --oneline
+}
+New-Alias la Get-GitLogTreeAll
+#-----------------------------------------------------------
+function Get-GitLogTreeOnlyBranches {
+    git fetch
+    git remote prune origin
+    git log -n20 --graph --oneline --simplify-by-decoration --all
+}
+New-Alias lb Get-GitLogTreeOnlyBranches
 #-----------------------------------------------------------
 function Invoke-GitPushForceWithLease {
     git push --force-with-lease
