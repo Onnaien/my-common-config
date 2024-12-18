@@ -108,6 +108,11 @@ function Set-LocationGit {
 }
 New-Alias g Set-LocationGit
 #-----------------------------------------------------------
+function Invoke-NpmInstall {
+    npm i
+}
+New-Alias i Invoke-NpmInstall
+#-----------------------------------------------------------
 function Get-GitLogTree {
     git fetch
     git remote prune origin
