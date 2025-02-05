@@ -6,6 +6,7 @@
 	cm = !git add -A && git commit -m
 	d = diff
 	default = !git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'
+	diffp = diff origin/master -- package.json
     ec = config --global -e
 	i = !git rebase --interactive `git mb` # interactive rebase to merge base (parent)
 	lbclean-delete-local-branches-without-remote = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
