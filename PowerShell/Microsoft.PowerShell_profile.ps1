@@ -99,7 +99,7 @@ function Get-GitBranch {
 New-Alias b Get-GitBranch
 #-----------------------------------------------------------
 function Open-Vscode {
-    code .
+    code -n .
 }
 New-Alias c Open-Vscode
 #-----------------------------------------------------------
