@@ -11,6 +11,7 @@
 	i = !git rebase --interactive `git mb` # interactive rebase to merge base (parent)
 	l = log -n 20 --all --graph --decorate --oneline
 	lbclean-delete-local-branches-without-remote = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
+	lf = log --all --graph --decorate --pretty=short --name-only
 	lgb = log --graph --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s%C(red)%d%Creset' --abbrev-commit --date=relative --branches
 	li = "!git fetch && git remote prune origin"
 	lmaster = log --oneline master #  --since='3 weeks ago'
