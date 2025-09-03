@@ -13,6 +13,7 @@
 	lbclean-delete-local-branches-without-remote = "!git fetch -p && git branch -vv | grep gone | cut -d' ' -f 3 | grep . | xargs git branch -D" # https://blog.objektkultur.de/quick-git-delete-local-branches-without-remote/
 	lf = log --all --graph --decorate --pretty=short --name-only
 	lgb = log --graph --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s%C(red)%d%Creset' --abbrev-commit --date=relative --branches
+	lgm = log --graph --pretty=format:'%C(yellow)%h%Creset %Cgreen(%cr) %C(bold blue)<%an>%Creset %s%C(red)%d%Creset' --abbrev-commit --date=relative # log master branch with names. Use --since "2 weeks" etc. to timebox
 	li = "!git fetch && git remote prune origin"
 	lmaster = log --oneline master #  --since='3 weeks ago'
 	lmine = log --oneline --author=\"Morten Undheim\" #  --since='3 weeks ago'
