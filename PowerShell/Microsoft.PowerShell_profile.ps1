@@ -116,7 +116,7 @@ New-Alias i Invoke-NpmInstall
 function Get-GitLogTree {
     git fetch
     git remote prune origin
-    git log -n 40 --all --graph --decorate --oneline
+    git log -n 34 --all --graph --decorate --oneline
 }
 New-Alias logtree Get-GitLogTree
 New-Alias l Get-GitLogTree
