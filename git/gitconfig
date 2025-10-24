@@ -22,9 +22,9 @@
 	mb = !git merge-base HEAD `git parent` # common ancestor of HEAD and parent
 	rebase-onto-master = "!git switch master && git pull && git switch - && git rebase --onto master $(git mb)" # rebase current branch onto master. That is, branch it off master instead of current parent.
 	rebase-onto-parent = "!git fetch && git rebase --onto $(git parent) $(git mb)"
-	rebase-branches = "!git fetch origin main:main && git rebase --update-refs main" # rebase current branches onto main
+	rebase-branches = "!git fetch origin master:master && git rebase --update-refs master" # rebase current branches onto master
 	rebase-branches-list = "!git for-each-ref --format='%(refname:short)' refs/heads/ --merged" # list all merged branches
-	rebase-branches-push = "!git rebase-branches-list | xargs -I {} git push --force-with-lease origin {}" # push rebased branches onto main"
+	rebase-branches-push = "!git rebase-branches-list | xargs -I {} git push --force-with-lease origin {}" # push rebased branches onto master
 	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 	pop-package = !git list-package-stash-number | git stash pop
 	list-package-stash-number = !git stash list --pretty='%gd %s'|grep "package-files"|head -1|gawk '{print $1}'
