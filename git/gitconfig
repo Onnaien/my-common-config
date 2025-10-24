@@ -22,9 +22,9 @@
 	mb = !git merge-base HEAD `git parent` # common ancestor of HEAD and parent
 	rebase-onto-master = "!git switch master && git pull && git switch - && git rebase --onto master $(git mb)" # rebase current branch onto master. That is, branch it off master instead of current parent.
 	rebase-onto-parent = "!git fetch && git rebase --onto $(git parent) $(git mb)"
-	rebase-branches = "!git fetch origin master:master && git rebase --update-refs master" # rebase sequence of branches onto master. Make sure you are located in the furthest branch. You may want to run 'git rebase-branches-list' first to see which branches will be rebased.
+	rebase-branches = "!f() { git fetch origin \"$1:$1\" && git rebase --update-refs \"$1\"; }; f" # rebase sequence of branches onto specified branch. Usage: git rebase-branches <branchname>
 	rebase-branches-list = "!git for-each-ref --format='%(refname:short)' refs/heads/ --merged | grep -v '^master$'" # list all merged branches except master
-	rebase-branches-push = "!git rebase-branches-list | xargs -I {} git push --force-with-lease origin {}" # push rebased branches onto master
+	rebase-branches-push = "!git rebase-branches-list | xargs -I {} git push --force-with-lease origin {}" # push rebased branches onto origin
 	parent = "!git show-branch | grep '*' | grep -v \"$(git rev-parse --abbrev-ref HEAD)\" | head -n1 | sed 's/.*\\[\\(.*\\)\\].*/\\1/' | sed 's/[\\^~].*//' #"
 	pop-package = !git list-package-stash-number | git stash pop
 	list-package-stash-number = !git stash list --pretty='%gd %s'|grep "package-files"|head -1|gawk '{print $1}'
