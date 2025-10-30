@@ -21,6 +21,7 @@
 	lnameonly = log --oneline --name-only # show only filenames
 	mb = !git merge-base HEAD `git parent` # common ancestor of HEAD and parent
 	rebase-onto-master = "!git switch master && git pull && git switch - && git rebase --onto master $(git mb)" # rebase current branch onto master. That is, branch it off master instead of current parent.
+	rebase-onto-master-from-branch = "!git rebase --update-refs --onto origin/master \"$1\"" # rebase current branch onto origin/master. That is, branch it off master instead of current parent.
 	rebase-onto-parent = "!git fetch && git rebase --onto $(git parent) $(git mb)"
 	rebase-branches = "!f() { git fetch origin \"$1:$1\" && git rebase --update-refs \"$1\"; }; f" # rebase sequence of branches onto specified branch. Usage: git rebase-branches <branchname>
 	rebase-branches-list = "!git for-each-ref --format='%(refname:short)' refs/heads/ --merged | grep -v '^master$'" # list all merged branches except master
