@@ -49,6 +49,7 @@
     
 [core]
 	editor = code
+	autocrlf = false
 
 [branch "master"]
 	pushRemote = no_push # push to a dummy repo when on master to disallow push to master.
