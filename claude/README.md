@@ -42,7 +42,18 @@ These stay local to each machine/user and must never be committed here:
 
 ## Setup on a new machine
 
-1. Clone this repo.
-2. Set `CLAUDE_CONFIG_DIR` to the absolute path of this `claude/` folder
-   (e.g. in `$PROFILE` for PowerShell, or `.bashrc`/`.zshrc` on macOS/Linux).
+1. Clone this repo under `\git\my-common-config` on whichever drive that
+   machine keeps its repos on (matching the existing `dev1`/`dev2`/`dev3`
+   convention).
+2. In `$PROFILE` (PowerShell), set:
+   ```powershell
+   $env:CLAUDE_CONFIG_DIR = "\git\my-common-config\claude"
+   ```
+   This is a drive-relative path (leading `\`, no drive letter) — it
+   resolves against whatever drive is current for the session, so the
+   *same* line works unmodified on both the `C:\git\...` and `D:\git\...`
+   machines, matching the drive-detection pattern already used elsewhere
+   in this profile (`Set-Location c:\git`/`d:\git`, the `g` alias, etc.).
+   It must be set after that drive-detection logic runs, so the session's
+   current drive is already correct by the time it's evaluated.
 3. Restart the shell / Claude Code.
