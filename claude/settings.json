@@ -1,8 +1,9 @@
 {
-  "autoUpdatesChannel": "latest",
   "statusLine": {
     "type": "command",
     "command": "oh-my-posh claude",
     "padding": 0
-  }
+  },
+  "autoUpdatesChannel": "latest",
+  "theme": "dark"
 }

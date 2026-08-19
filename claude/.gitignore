@@ -1,0 +1,18 @@
+# Machine/account-local state — never sync. Claude Code writes these
+# directly inside CLAUDE_CONFIG_DIR; each machine/account needs its own.
+.claude.json
+.credentials.json
+backups/
+cache/
+downloads/
+ide/
+sessions/
+session-env/
+shell-snapshots/
+file-history/
+plans/
+history.jsonl
+mcp-needs-auth-cache.json
+policy-limits.json
+remote-settings.json
+.last-cleanup
