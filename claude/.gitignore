@@ -16,3 +16,7 @@ mcp-needs-auth-cache.json
 policy-limits.json
 remote-settings.json
 .last-cleanup
+
+# Per-project session transcripts/state — only memory/ is meant to sync
+projects/*/*
+!projects/*/memory
