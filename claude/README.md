@@ -15,6 +15,17 @@ path (e.g. `C--git-dev3-ignos-client` maps to `C:\git\dev3\ignos-client`).
 This only resolves correctly on another machine if the repo is checked out
 at the *same* absolute path there too.
 
+**Drive-letter mismatch:** the other PC checks these repos out under `D:\`
+instead of `C:\`, so each project also has a `D--...` duplicate folder with
+the same memory content (assumed path: `D:\git\dev1\ignos-client` and
+`D:\git\dev3\ignos-client` — confirm/adjust if wrong).
+
+⚠️ This duplication is a one-time manual snapshot, not a live sync. Claude
+Code only writes new memories into the slug matching the machine it's
+running on (e.g. only `C--...` updates on the C: machine). To keep both
+machines' memory current, periodically re-run the copy (or ask Claude to)
+so both `C--...` and `D--...` folders match.
+
 ## Deliberately NOT synced
 
 These stay local to each machine/user and must never be committed here:
