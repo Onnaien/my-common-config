@@ -5,5 +5,6 @@
     "padding": 0
   },
   "autoUpdatesChannel": "latest",
-  "theme": "dark"
+  "theme": "dark",
+  "tui": "fullscreen"
 }
